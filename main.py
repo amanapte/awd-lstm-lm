@@ -256,10 +256,12 @@ try:
                 model_save(args.save)
                 print('Saving Averaged!')
                 stored_loss = val_loss2
-
+#-------------------------------------------------
             for prm in model.parameters():
+              try:
                 prm.data = tmp[prm].clone()
-
+              except:
+                print(" know that-> prm key not in map")
         else:
             val_loss = evaluate(val_data, eval_batch_size)
             print('-' * 89)
