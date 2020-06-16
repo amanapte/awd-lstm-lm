@@ -241,7 +241,8 @@ try:
         if 't0' in optimizer.param_groups[0]:
             tmp = {}
             for prm in model.parameters():
-                tmp[prm] = prm.data.clone()
+              tmp[prm] = prm.data.clone()
+              if 'ax' in optimizer.state[prm]:
                 prm.data = optimizer.state[prm]['ax'].clone()
 
             val_loss2 = evaluate(val_data)
